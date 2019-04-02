@@ -5,13 +5,11 @@ exports.seed = (knex, Promise) => {
     .rollback()
     .then(() => knex.migrate.latest())
     .then(() => knex('topics').insert(topicData).returning('*')).then((topicRows) => console.log(topicRows))
-    .then(() => {
-     return knex('users').insert(userData).returning('*')
-    // .then(() => {
-    });
+    .then(() => { return knex('users').insert(userData).returning('*').then((userRows) => console.log(userRows))})
+    .then(() => { return knex('articles').insert(articleData).returning('*').then((articleRows) => console.log(articleRows)); 
+  })
 };
 
-// .then(() => { return knex('articles').insert(articleData).returning('*') })
 // const formatTime 
 // need util for changing timestamp into a date
 // .then(() => { return knex('comments').insert(commentData).returning('*' ) })
