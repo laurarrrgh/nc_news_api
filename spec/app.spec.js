@@ -12,23 +12,26 @@ describe('/', () => {
   beforeEach(() => connection.seed.run());
   after(() => connection.destroy());
 
-  describe.only('/api', () => {
+  describe('/api', () => {
     it('GET status:200', () => {
       return request
         .get('/api')
         .expect(200)
         .then(({ body }) => {
-          console.log({body})
+         // console.log({body})
           expect(body.ok).to.equal(true);
         });
     });
-    // it('GET status:200', () => {
-    //   return request
-    //     .get('/api/topics')
-    //     .expect(200)
-    //     .then(({ body }) => {
-    //       expect()
-    //     })
-    // })
+    it('GET status:200', () => {
+      return request
+        .get('/api/topics')
+        .expect(200) 
+        .then(({ body }) => {
+          expect()
+        })
+    })
   });
 });
+// error handling
+// routes
+// resources
