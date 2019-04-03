@@ -9,20 +9,16 @@ exports.seed = (knex, Promise) => {
     .then(() => knex.migrate.latest())
     .then(() => knex('topics').insert(topicData).returning('*'))
     .then((topics) => {
-      console.log(`${topics.length} topics inserted`) 
       return knex('users').insert(userData).returning('*')
     })
       .then((users) => {
-      console.log(`${users.length} users inserted`)
       const formatTime = createNewTimeFormat(articleData);
       return knex('articles').insert(formatTime).returning('*')
     })
   .then((articles) => {
-      console.log(`${articles.length} articles inserted`) 
      const referenceObject = createReferenceObject(articles)
      const formatCommentTime = createNewTimeFormatComments(commentData, referenceObject);
       return knex('comments').insert(formatCommentTime).returning('*') 
-      //console.log(`${comments.length} comments inserted`)
     .catch(console.log);
 });
 };

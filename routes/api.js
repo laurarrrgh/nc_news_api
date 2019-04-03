@@ -1,5 +1,7 @@
 const apiRouter = require('express').Router();
 const { methodNotAllowed } = require('../errors');
+const { sendAllTopics } = require('../controllers/topics');
+const { sendAllArticles } = require('../controllers/articles');
 
 apiRouter
   .route('/')
@@ -7,8 +9,9 @@ apiRouter
   .all(methodNotAllowed);
 
   apiRouter
-    .get('/topics', (req, res) => {
-      res.status(200).send({ msg: 'Topics reached!' })
-    });
+    .get('/topics', sendAllTopics);
+
+  apiRouter
+    .get('/articles', sendAllArticles);
 
 module.exports = apiRouter;
