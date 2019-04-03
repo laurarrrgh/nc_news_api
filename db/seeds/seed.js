@@ -1,5 +1,7 @@
 const { articleData, commentData, topicData, userData } = require('../data');
 const { createNewTimeFormat } = require('../../utils/create-new-time-format');
+const { createNewTimeFormatComments } = require('../../utils/create-new-time-format-comments.js');
+const { formatUsernameToAuthor } = require('../../utils/format-username-to-author.js')
 
 exports.seed = (knex, Promise) => {
   return knex.migrate
@@ -18,11 +20,14 @@ exports.seed = (knex, Promise) => {
   .then((articles) => {
       console.log(`${articles.length} articles inserted`) 
      // format comment data
-     // return knex('comments').insert(commentData).returning('*')
-  })
+     const formatCommentTime = createNewTimeFormatComments(commentData);
+      return knex('comments').insert(formatCommentTime).returning('*') 
+    .catch(console.log); // <------ will not work without catch???
+});
 };
 
 
-// need util for changing timestamp into a date
+
+// need util for changing timestamp into a date - TICK
 // need util for author being username (created by in data file)
 // n.b.  belongs_to is article title from comment to article - need to create reference object super complicated - DOUBLE CHECK LAURA

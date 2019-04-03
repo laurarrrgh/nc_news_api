@@ -1,5 +1,5 @@
 exports.createNewTimeFormat = function(articlesArray) {
-  console.log(articlesArray)
+  // console.log(articlesArray)
     const newTimes = articlesArray.map((article) => {
       return {
         title: article.title,
