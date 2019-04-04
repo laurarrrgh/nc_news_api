@@ -1,7 +1,7 @@
 const apiRouter = require('express').Router();
 const { methodNotAllowed } = require('../errors');
 const { sendAllTopics } = require('../controllers/topics');
-const { sendAllArticles } = require('../controllers/articles');
+const { sendAllArticles, sendAnArticle } = require('../controllers/articles');
 
 apiRouter
   .route('/')
@@ -12,6 +12,9 @@ apiRouter
     .get('/topics', sendAllTopics);
 
   apiRouter
-    .get('/articles', sendAllArticles);
+    .get('/articles', sendAllArticles),
+    
+  apiRouter  
+    .get('/articles/:article_id', sendAnArticle);
 
 module.exports = apiRouter;
