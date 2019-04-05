@@ -31,3 +31,19 @@ exports.fetchAnArticle = ( { article_id }) => {
     .where('articles.article_id', '=', article_id)
     .groupBy('articles.article_id')
 } 
+
+exports.updateVotes = () => {
+//   return knex
+//   .select('articles.author',
+//   'articles.title',
+//   'articles.article_id',
+//   'articles.body',
+//   'articles.topic',
+//   'articles.created_at',
+//   'articles.votes')
+// .from('articles')
+// .count({ comment_count: 'comment_id'})
+// .leftJoin('comments','comments.article_id', 'articles.article_id')
+// .where('articles.article_id', '=', article_id)
+// .groupBy('articles.article_id')
+}

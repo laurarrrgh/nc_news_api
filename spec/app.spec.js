@@ -70,6 +70,25 @@ describe.only('/', () => {
           })
       })
   })
+    it('PATCH status 200 responds with an updated article reflecting votes', () => {
+      return request
+        .patch('/api/articles/1')
+        .expect(200)
+        .then(res => {
+          expect(res.body.article).to.contain.keys('author', 'title', 'article_id', 'topic', 'body', 'created_at', 'votes', 'comment_count');
+          expect(res.body.article).to.eql(
+            {
+               author: 'butter_bridge',
+               title: 'Living in the shadow of a great man',
+               article_id: 1,
+               topic: 'mitch',
+               body: 'I find this existence challenging',
+               created_at: '2018-11-15T12:21:54.171Z',
+               votes: 100, // need to change vote amount
+               comment_count: '13',
+         })
+        })
+    })
 })
   })
 })

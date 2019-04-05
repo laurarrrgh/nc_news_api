@@ -1,4 +1,4 @@
-const { fetchAllArticles, fetchAnArticle } = require('../models/articles.js');
+const { fetchAllArticles, fetchAnArticle, updateVotes } = require('../models/articles.js');
 
 exports.sendAllArticles = (req, res, next) => {
   fetchAllArticles(req.query).then(articles => { 
@@ -11,3 +11,7 @@ exports.sendAnArticle = (req, res, next) => {
     res.status(200).send({ article });
   }).catch(console.log)
 };
+
+exports.patchVotes = (req, res, next) => {
+  updateVotes(req.params).then()
+}
