@@ -30,4 +30,4 @@ exports.fetchAnArticle = ( { article_id }) => {
     .leftJoin('comments','comments.article_id', 'articles.article_id')
     .where('articles.article_id', '=', article_id)
     .groupBy('articles.article_id')
-} // need to change test!!!
+} // need clarify votes - one record in test article data has vote but none in dev data
