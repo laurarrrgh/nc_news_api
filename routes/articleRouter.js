@@ -6,7 +6,7 @@ articleRouter
 .get('/', sendAllArticles),
 
 articleRouter  
-.get('/:article_id', sendAnArticle);
+.get('/:article_id', sendAnArticle),
 
 
 module.exports = articleRouter;

@@ -57,16 +57,17 @@ describe.only('/', () => {
           .expect(200)
           .then(res => {
             expect(res.body.article).to.contain.keys('author', 'title', 'article_id', 'topic', 'created_at', 'votes', 'comment_count');
-          //   expect(res.body.article).to.equal(
-          //    {
-          //       title: 'Living in the shadow of a great man',
-          //       topic: 'mitch',
-          //       author: 'butter_bridge',
-          //       body: 'I find this existence challenging',
-          //       created_at: 1542284514171,
-          //       votes: 100,
-          // } )
-
+            expect(res.body.article).to.equal(
+             {
+                article_id: 1,
+                title: 'Living in the shadow of a great man',
+                topic: 'mitch',
+                author: 'butter_bridge',
+                body: 'I find this existence challenging',
+                created_at: '2018-11-15T12:21:54.171Z',
+                votes: 0,
+                comment_count: '13',
+          } )
       })
   })
 })
