@@ -48,7 +48,6 @@ describe.only('/', () => {
         .get('/api/articles?sort_by=created_at')
         .expect(200)
         .then(res => {
-          // expect(res.body.articles.created_at).to.be.sortedBy('created_at', { descending: true });
           expect(res.body.articles).that.be.descendingBy('created_at');
             })
     })
@@ -57,20 +56,22 @@ describe.only('/', () => {
           .get('/api/articles/1')
           .expect(200)
           .then(res => {
-            expect(res.body).that.equal(
-             [ {
-                title: 'Living in the shadow of a great man',
-                topic: 'mitch',
-                author: 'butter_bridge',
-                body: 'I find this existence challenging',
-                created_at: 1542284514171,
-                votes: 100,
-          } ])
+            expect(res.body.article).to.contain.keys('author', 'title', 'article_id', 'topic', 'created_at', 'votes', 'comment_count');
+          //   expect(res.body.article).to.equal(
+          //    {
+          //       title: 'Living in the shadow of a great man',
+          //       topic: 'mitch',
+          //       author: 'butter_bridge',
+          //       body: 'I find this existence challenging',
+          //       created_at: 1542284514171,
+          //       votes: 100,
+          // } )
 
       })
   })
 })
   })
+})
   //   describe('QUERIES', () => {
   //     // it('GET status 200 filters the article by given topic', () => {
   //     //   return request  

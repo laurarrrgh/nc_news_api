@@ -6,8 +6,8 @@ exports.sendAllArticles = (req, res, next) => {
   }).catch(console.log)
 };
 
-exports.sendAnArticle = (res, req, next) => {
-  fetchAnArticle(req.query).then(articles => {
+exports.sendAnArticle = (req, res, next) => {
+  fetchAnArticle(req.params).then(([article]) => {
     res.status(200).send({ article });
   }).catch(console.log)
 };

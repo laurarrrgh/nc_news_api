@@ -16,17 +16,18 @@ exports.fetchAllArticles = ({ sort_by }) => {
   //  .where()
 }
 
-//Need new model for fetch an article by article id
-exports.fetchAnArticle = () => {
+exports.fetchAnArticle = ( { article_id }) => {
   return knex
     .select('articles.author',
             'articles.title',
             'articles.article_id',
-            'article.body',
-            'articles.topics',
+            'articles.body',
+            'articles.topic',
             'articles.created_at',
             'articles.votes')
+    .from('articles')
     .count({ comment_count: 'comment_id'})
     .leftJoin('comments','comments.article_id', 'articles.article_id')
+    .where('articles.article_id', '=', article_id)
     .groupBy('articles.article_id')
-}
+} // need to change test!!!
