@@ -8,9 +8,8 @@ apiRouter
   .get((req, res) => res.send( { "ok": true }))
   .all(methodNotAllowed);
 
-  apiRouter.use('/topics', topicRouter);
-   // .get('/topics', sendAllTopics);
+apiRouter.use('/topics', topicRouter);
 
- apiRouter.use('/articles', articleRouter);
+apiRouter.use('/articles', articleRouter);
 
 module.exports = apiRouter;
